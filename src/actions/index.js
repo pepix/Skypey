@@ -5,7 +5,7 @@ import {
     EDIT_MESSAGE,
     ENABLE_EDIT_MODE,
     DISABLE_EDIT_MODE,
-    // DELETE_MESSAGE,
+    DELETE_MESSAGE,
 } from "../constants/action-types";
 
 export const setActiveUserId = id => ({
@@ -46,4 +46,12 @@ export const enableEditMode = (activeUserId, messageNum) => ({
 export const disableEditMode = () => ({
   type: DISABLE_EDIT_MODE,
   payload: null
+})
+
+export const deleteMessage = (userId, messageNum) => ({
+  type: DELETE_MESSAGE,
+  payload: {
+    userId,
+    messageNum
+  }
 })

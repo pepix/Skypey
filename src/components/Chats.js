@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import store from "../store";
-import { enableEditMode, setTypingValue } from "../actions";
+import { enableEditMode, setTypingValue, deleteMessage } from "../actions";
 import "./Chats.css";
 
 function clickMessage(message, userId) {
@@ -10,12 +10,16 @@ function clickMessage(message, userId) {
   }
 }
 
+function clickDeleteMessageButton(message, userId) {
+  store.dispatch(deleteMessage(userId, message.number));
+}
+
 const Chat = ({ message, userId }) => {
   const { text, is_user_msg } = message;
 
   return (
     <div className={`ChatContainer ${is_user_msg ? "is-user-msg" : ""}`}>
-      <button　className="deleteButton">×</button>
+      <button　className="deleteButton" onClick={clickDeleteMessageButton.bind(null, message, userId)}>×</button>
       <span id="msg" name="msg" className={`Chat ${is_user_msg ? "is-user-msg" : ""}`} onClick={clickMessage.bind(null, message, userId)}>{text}</span>
     </div>
   );
