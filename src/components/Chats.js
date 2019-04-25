@@ -14,7 +14,10 @@ const Chat = ({ message, userId }) => {
   const { text, is_user_msg } = message;
 
   return (
-    <span id="msg" name="msg" className={`Chat ${is_user_msg ? "is-user-msg" : ""}`} onClick={clickMessage.bind(null, message, userId)}>{text}</span>
+    <div className={`ChatContainer ${is_user_msg ? "is-user-msg" : ""}`}>
+      <button　className="deleteButton">×</button>
+      <span id="msg" name="msg" className={`Chat ${is_user_msg ? "is-user-msg" : ""}`} onClick={clickMessage.bind(null, message, userId)}>{text}</span>
+    </div>
   );
 };
 
